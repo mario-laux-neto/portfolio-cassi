@@ -16,6 +16,7 @@ import {
   SiChakraui,
 } from "react-icons/si";
 import { MdApi } from "react-icons/md";
+import Image from 'next/image';
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
@@ -173,7 +174,12 @@ const About = () => {
 
         <StyledPic>
           <div className="wrapper">
-            <img src="/headshot.jpeg" alt="Foto de perfil" className="img" />
+            <Image src="/headshot.jpeg"
+            alt="Foto de perfil"
+            className="img"
+            width={400}
+            height={400}
+            />
           </div>
         </StyledPic>
       </div>

@@ -2,6 +2,7 @@
 "use client";
 import styled from "styled-components";
 import { theme } from "../../styles/theme";
+import Link from 'next/link';
 
 const StyledHeader = styled.header`
   display: flex;
@@ -150,25 +151,25 @@ const Header = () => {
   return (
     <StyledHeader>
       <StyledLogo>
-        <a href="/" aria-label="home">
+        <Link href="/" aria-label="home">
           MLN
-        </a>
+        </Link>
       </StyledLogo>
 
       <StyledNav>
         <StyledLinks>
           <ol>
             <li>
-              <a href="/#about">Sobre</a>
+              <Link href="/#about">Sobre</Link>
             </li>
             <li>
-              <a href="/#experience">Experiência</a>
+              <Link href="/#experience">Experiência</Link>
             </li>
             <li>
-              <a href="/#projects">Trabalhos</a>
+              <Link href="/#projects">Trabalhos</Link>
             </li>
             <li>
-              <a href="/#contact">Contato</a>
+              <Link href="/#contact">Contato</Link>
             </li>
           </ol>
         </StyledLinks>
