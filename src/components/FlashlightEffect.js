@@ -17,7 +17,7 @@ const StyledFlashlight = styled.div`
     transparent 80%
   );
   opacity: 0;
-  transition: opacity 300ms;
+  transition: opacity 30ms;
 
   &.active {
     opacity: 1;

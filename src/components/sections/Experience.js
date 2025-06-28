@@ -1,8 +1,8 @@
 // src/components/sections/Experience.js
-'use client';
-import { useState } from 'react';
-import styled from 'styled-components';
-import { theme } from '../../../styles/theme';
+"use client";
+import { useState } from "react";
+import styled from "styled-components";
+import { theme } from "../../../styles/theme";
 
 const StyledExperienceSection = styled.section`
   h2 {
@@ -23,7 +23,7 @@ const StyledTabList = styled.div`
 `;
 
 const StyledTabButton = styled.button.withConfig({
-  shouldForwardProp: (prop) => !['isActive'].includes(prop),
+  shouldForwardProp: (prop) => !["isActive"].includes(prop),
 })`
   display: flex;
   align-items: center;
@@ -33,7 +33,8 @@ const StyledTabButton = styled.button.withConfig({
   background-color: transparent;
   border: 0;
   border-left: 2px solid ${theme.colors.lightestNavy};
-  color: ${({ isActive }) => (isActive ? theme.colors.green : theme.colors.slate)};
+  color: ${({ isActive }) =>
+    isActive ? theme.colors.green : theme.colors.slate};
   font-family: ${theme.fonts.mono};
   font-size: ${theme.fontSizes.smish};
   text-align: left;
@@ -48,7 +49,7 @@ const StyledTabButton = styled.button.withConfig({
 `;
 
 const StyledHighlight = styled.div.withConfig({
-  shouldForwardProp: (prop) => !['activeTab'].includes(prop),
+  shouldForwardProp: (prop) => !["activeTab"].includes(prop),
 })`
   position: absolute;
   top: 0;
@@ -72,7 +73,7 @@ const StyledTabContent = styled.div`
     font-weight: 500;
     margin-bottom: 5px;
   }
-  
+
   .company {
     color: ${theme.colors.green};
   }
@@ -95,7 +96,7 @@ const StyledTabContent = styled.div`
       margin-bottom: 10px;
 
       &:before {
-        content: '▹';
+        content: "▹";
         position: absolute;
         left: 0;
         color: ${theme.colors.green};
@@ -105,7 +106,7 @@ const StyledTabContent = styled.div`
 
   .skills-section {
     margin-top: 25px;
-    
+
     h4 {
       font-size: ${theme.fontSizes.md};
       font-weight: 500;
@@ -118,7 +119,7 @@ const StyledTabContent = styled.div`
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      
+
       .skill-tag {
         background-color: ${theme.colors.lightNavy};
         color: ${theme.colors.green};
@@ -132,119 +133,141 @@ const StyledTabContent = styled.div`
   }
 `;
 
-
 const jobsData = [
-    {
-      company: 'CRS - Pollen Parque',
-      role: 'Estagiário em Desenvolvimento',
-      date: 'Abril 2025 - Presente',
-      tasks: [
-        'Desenvolvimento de aplicações web modernas utilizando React.js e Next.js',
-        'Colaboração em projetos do Centro de Residência em Software',
-        'Aplicação de boas práticas de desenvolvimento e versionamento com Git'
-      ],
-      skills: ['React.js', 'Next.js', 'JavaScript', 'HTML/CSS', 'Git']
-    },
-    {
-      company: 'Santa Maria Imóveis',
-      role: 'Assistente Administrativo',
-      date: 'Junho 2024 - Dezembro 2024 - 7 meses',
-      tasks: [
-        'Responsável por uma variedade de rotinas administrativas, incluindo atendimento direto ao cliente',
-        'Atualização e gestão de dados em planilhas de controle',
-        'Controle de cobranças de condomínios e processos de cancelamento de seguros',
-        'Conferência e organização de documentos'
-      ],
-      skills: ['Atendimento ao Cliente', 'Excel', 'Gestão de Dados', 'Organização']
-    },
-    {
-      company: 'Cotrisal',
-      role: 'Auxiliar Administrativo',
-      date: 'Dezembro 2021 - Janeiro 2024 - 2 anos e 2 meses',
-      tasks: [
-        'Conferência e lançamento de caixas financeiros',
-        'Organização e distribuição de documentos contábeis',
-        'Atualização de dados em planilhas de controle',
-        'Garantia da precisão das informações financeiras'
-      ],
-      skills: ['Contabilidade', 'Excel', 'Controle Financeiro', 'Atenção aos Detalhes']
-    },
-    {
-      company: 'Cotrisal',
-      role: 'Estagiário',
-      date: 'Fevereiro 2021 - Dezembro 2021 - 11 meses',
-      tasks: [
-        'Gestão e organização de documentos empresariais',
-        'Separação e arquivamento de notas fiscais e documentos importantes',
-        'Manutenção da integridade do arquivo morto da empresa',
-        'Garantia de fácil acesso às informações arquivadas'
-      ],
-      skills: ['Organização', 'Gestão Documental', 'Arquivamento', 'Atenção aos Detalhes']
-    },
+  {
+    company: "CRS - Pollen Parque",
+    role: "Estagiário em Desenvolvimento",
+    date: "Abril 2025 - Presente",
+    tasks: [
+      "Desenvolvimento de aplicações web modernas utilizando React.js e Next.js",
+      "Colaboração em projetos do Centro de Residência em Software",
+      "Aplicação de boas práticas de desenvolvimento e versionamento com Git",
+    ],
+    skills: ["React.js", "Next.js", "JavaScript", "HTML/CSS", "Git"],
+  },
+  {
+    company: "Santa Maria Imóveis",
+    role: "Assistente Administrativo",
+    date: "Junho 2024 - Dezembro 2024 - 7 meses",
+    tasks: [
+      "Responsável por uma variedade de rotinas administrativas, incluindo atendimento direto ao cliente",
+      "Atualização e gestão de dados em planilhas de controle",
+      "Controle de cobranças de condomínios e processos de cancelamento de seguros",
+      "Conferência e organização de documentos",
+    ],
+    skills: [
+      "Atendimento ao Cliente",
+      "Excel",
+      "Gestão de Dados",
+      "Organização",
+    ],
+  },
+  {
+    company: "Cotrisal",
+    role: "Auxiliar Administrativo",
+    date: "Dezembro 2021 - Janeiro 2024 - 2 anos e 2 meses",
+    tasks: [
+      "Conferência e lançamento de caixas financeiros",
+      "Organização e distribuição de documentos contábeis",
+      "Atualização de dados em planilhas de controle",
+      "Garantia da precisão das informações financeiras",
+    ],
+    skills: [
+      "Contabilidade",
+      "Excel",
+      "Controle Financeiro",
+      "Atenção aos Detalhes",
+    ],
+  },
+  {
+    company: "Cotrisal",
+    role: "Estagiário",
+    date: "Fevereiro 2021 - Dezembro 2021 - 11 meses",
+    tasks: [
+      "Gestão e organização de documentos empresariais",
+      "Separação e arquivamento de notas fiscais e documentos importantes",
+      "Manutenção da integridade do arquivo morto da empresa",
+      "Garantia de fácil acesso às informações arquivadas",
+    ],
+    skills: [
+      "Organização",
+      "Gestão Documental",
+      "Arquivamento",
+      "Atenção aos Detalhes",
+    ],
+  },
 ];
 
 const Experience = () => {
-    const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(0);
 
-    return (
-        <StyledExperienceSection id="experience">
-            <h2>Onde Trabalhei</h2>
-            <StyledTabContainer>
-                <StyledTabList role="tablist" aria-label="Job tabs">
-                    {jobsData && jobsData.map((job, i) => (
-                        <StyledTabButton
-                            key={i}
-                            isActive={activeTab === i}
-                            onClick={() => setActiveTab(i)}
-                            id={`tab-${i}`}
-                            role="tab"
-                            aria-selected={activeTab === i}
-                            aria-controls={`panel-${i}`}
-                        >
-                            <span>{job.company}</span>
-                        </StyledTabButton>
-                    ))}
-                    <StyledHighlight activeTab={activeTab} />
-                </StyledTabList>
+  return (
+    <StyledExperienceSection id="experience">
+      <h2 className="numbered-heading">Onde Trabalhei</h2>
+      <StyledTabContainer>
+        <StyledTabList role="tablist" aria-label="Job tabs">
+          {jobsData &&
+            jobsData.map((job, i) => (
+              <StyledTabButton
+                key={i}
+                isActive={activeTab === i}
+                onClick={() => setActiveTab(i)}
+                id={`tab-${i}`}
+                role="tab"
+                aria-selected={activeTab === i}
+                aria-controls={`panel-${i}`}
+              >
+                <span>{job.company}</span>
+              </StyledTabButton>
+            ))}
+          <StyledHighlight activeTab={activeTab} />
+        </StyledTabList>
 
-                <div>
-                    {jobsData && jobsData.map((job, i) => (
-                        <StyledTabContent
-                            key={i}
-                            id={`panel-${i}`}
-                            role="tabpanel"
-                            tabIndex={activeTab === i ? '0' : '-1'}
-                            aria-labelledby={`tab-${i}`}
-                            hidden={activeTab !== i}
-                        >
-                            <h3>
-                                <span>{job.role}</span>
-                                <span className="company">
-                                    &nbsp;@&nbsp;
-                                    <a href="#" className="inline-link">{job.company}</a>
-                                </span>
-                            </h3>
-                            <p>{job.date}</p>
-                            <ul>
-                                {job.tasks.map((task, j) => <li key={j}>{task}</li>)}
-                            </ul>
-                            
-                            {job.skills && (
-                                <div className="skills-section">
-                                    <h4>Competências:</h4>
-                                    <div className="skills-list">
-                                        {job.skills.map((skill, k) => (
-                                            <span key={k} className="skill-tag">{skill}</span>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                        </StyledTabContent>
-                    ))}
-                </div>
-            </StyledTabContainer>
-        </StyledExperienceSection>
-    );
+        <div>
+          {jobsData &&
+            jobsData.map((job, i) => (
+              <StyledTabContent
+                key={i}
+                id={`panel-${i}`}
+                role="tabpanel"
+                tabIndex={activeTab === i ? "0" : "-1"}
+                aria-labelledby={`tab-${i}`}
+                hidden={activeTab !== i}
+              >
+                <h3>
+                  <span>{job.role}</span>
+                  <span className="company">
+                    &nbsp;@&nbsp;
+                    <a href="#" className="inline-link">
+                      {job.company}
+                    </a>
+                  </span>
+                </h3>
+                <p>{job.date}</p>
+                <ul>
+                  {job.tasks.map((task, j) => (
+                    <li key={j}>{task}</li>
+                  ))}
+                </ul>
+
+                {job.skills && (
+                  <div className="skills-section">
+                    <h4>Competências:</h4>
+                    <div className="skills-list">
+                      {job.skills.map((skill, k) => (
+                        <span key={k} className="skill-tag">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </StyledTabContent>
+            ))}
+        </div>
+      </StyledTabContainer>
+    </StyledExperienceSection>
+  );
 };
 
 export default Experience;

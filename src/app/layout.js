@@ -7,7 +7,7 @@ import "../../styles/numbered-headings.css";
 
 export const metadata = {
   title: "Mário Laux Neto | Desenvolvedor",
-  description: "Portfólio Pessoal de um Desenvolvedor Web",
+  description: "Portfólio Pessoal",
 };
 
 export default function RootLayout({ children }) {

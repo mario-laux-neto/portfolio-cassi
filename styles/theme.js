@@ -1,14 +1,14 @@
 // styles/theme.js
 export const theme = {
   colors: {
-    navy: "#0f0a1a",
-    lightNavy: "#1a0f2e",
-    lightestNavy: "#2a1a4a",
-    slate: "#b094c7",
-    lightSlate: "#c9b3d8",
-    lightestSlate: "#e2d4f0",
-    white: "#f3edff",
-    green: "#64ffda",
+    navy: "#0f172a",
+    lightNavy: "#1e293b",
+    lightestNavy: "#334155",
+    slate: "#475569",
+    lightSlate: "#64748b",
+    lightestSlate: "#94a3b8",
+    white: "#ffffff",
+    green: "#2563eb",
   },
 
   fonts: {

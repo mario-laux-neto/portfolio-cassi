@@ -2,7 +2,7 @@
 "use client";
 import styled from "styled-components";
 import { theme } from "../../styles/theme";
-import Link from 'next/link';
+import Link from "next/link";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -96,7 +96,6 @@ const StyledLinks = styled.div`
     li {
       margin: 0 5px;
       position: relative;
-      counter-increment: item 1;
       font-size: ${theme.fontSizes.xs};
 
       a {
@@ -104,14 +103,6 @@ const StyledLinks = styled.div`
         text-decoration: none;
         color: inherit;
         transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-
-        &:before {
-          content: "0" counter(item) ".";
-          margin-right: 8px;
-          color: ${theme.colors.green};
-          font-size: ${theme.fontSizes.xs};
-          text-align: right;
-        }
 
         &:hover {
           color: ${theme.colors.green};
@@ -160,13 +151,16 @@ const Header = () => {
         <StyledLinks>
           <ol>
             <li>
+              <Link href="/#home">Início</Link>
+            </li>
+            <li>
               <Link href="/#about">Sobre</Link>
             </li>
             <li>
               <Link href="/#experience">Experiência</Link>
             </li>
             <li>
-              <Link href="/#projects">Trabalhos</Link>
+              <Link href="/#projects">Projetos</Link>
             </li>
             <li>
               <Link href="/#contact">Contato</Link>

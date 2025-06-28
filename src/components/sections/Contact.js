@@ -34,6 +34,7 @@ const StyledContactSection = styled.section`
   .title {
     font-size: clamp(40px, 5vw, 60px);
     color: ${theme.colors.lightestSlate};
+    margin-bottom: 20px;
   }
 
   .email-link {
@@ -90,7 +91,7 @@ const StyledSocialLinks = styled.div`
 const Contact = () => {
   return (
     <StyledContactSection id="contact">
-      <h2 className="title">Entre em Contato</h2>
+      <h2 className="numbered-heading">Entre em Contato</h2>
 
       <p>
         Estou sempre aberto a novas oportunidades e conexões interessantes. Se

@@ -111,12 +111,22 @@ const Hero = () => {
   const four = (
     <StyledDescription>
       <p>
-        Graduando em Sistemas de Informação e desenvolvedor focado no ecossistema JavaScript. Atualmente, como estagiário no Centro de Residência em Software do Pollen Parque, desenvolvo projetos práticos com HTML, CSS, React.js e Next.js. Minha experiência anterior nas áreas administrativa e contábil  me proporcionou forte organização e atenção aos detalhes, competências que aplico hoje na criação de software de qualidade.
+        Graduando em Sistemas de Informação e desenvolvedor focado no
+        ecossistema JavaScript. Atualmente, como estagiário no Centro de
+        Residência em Software do Pollen Parque, desenvolvo projetos práticos
+        com HTML, CSS, React.js e Next.js. Minha experiência anterior nas áreas
+        administrativa e contábil me proporcionou forte organização e atenção
+        aos detalhes, competências que aplico hoje na criação de software de
+        qualidade.
       </p>
     </StyledDescription>
   );
   const five = (
-    <StyledEmailLink href="https://wa.me/5554996837282" target="_blank" rel="noopener noreferrer">
+    <StyledEmailLink
+      href="https://wa.me/5554996837282"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       Entre em contato!
     </StyledEmailLink>
   );
@@ -124,7 +134,7 @@ const Hero = () => {
   const items = [one, two, three, four, five];
 
   return (
-    <StyledHeroSection>
+    <StyledHeroSection id="home">
       {items.map((item, i) => (
         <motion.div
           key={i}

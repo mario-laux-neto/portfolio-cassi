@@ -5,6 +5,7 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Experience from "@/components/sections/Experience";
 import Contact from "@/components/sections/Contact";
+import Projects from "@/components/sections/Projects";
 
 const StyledMainContainer = styled.main`
   counter-reset: section;
@@ -45,6 +46,9 @@ export default function Home() {
       <StyledSection>
         <Experience />
       </StyledSection>
+      <styledSection>
+        <Projects />
+      </styledSection>
       <StyledSection>
         <Contact />
       </StyledSection>
