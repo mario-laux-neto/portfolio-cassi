@@ -136,7 +136,7 @@ const StyledSeparator = styled.hr`
 
 const StyledProject = styled.div`
   text-align: center;
-  margin: 20px 0;
+  margin: 40px 0;
   width: 100%;
   max-width: 800px;
 
@@ -1225,8 +1225,7 @@ const FrontEnd = () => {
             direta do DOM.
           </h2>
           <p>
-            <strong>Tecnologias Utilizadas:</strong> HTML5, CSS3 e JavaScript
-            (Puro/Vanilla).
+            <strong>Tecnologias Utilizadas:</strong>
           </p>
           <ul className="skills-list">
             <li style={{ textAlign: "center" }}>
