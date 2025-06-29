@@ -2,7 +2,7 @@
 "use client";
 import styled from "styled-components";
 import { theme } from "../../../styles/theme";
-import Link from 'next/link';
+import Link from "next/link";
 
 const StyledProjectsSection = styled.section`
   max-width: 1000px;
@@ -189,12 +189,12 @@ const Projects = () => {
       <StyledCategoriesGrid>
         <StyledCategoryCard>
           <StyledCardContent>
-            <StyledCardTitle>E-commerce</StyledCardTitle>
+            <StyledCardTitle>Front-end</StyledCardTitle>
             <StyledCardDescription>
-              Projetos de lojas virtuais modernas e completas.
+              Projetos focados em interfaces de usuário e design interativo.
             </StyledCardDescription>
             <StyledCardActions>
-              <Link href="/ecommerce" className="btn-primary">
+              <Link href="/front-end" className="btn-primary">
                 Ver Projetos
               </Link>
             </StyledCardActions>
@@ -204,28 +204,12 @@ const Projects = () => {
 
         <StyledCategoryCard>
           <StyledCardContent>
-            <StyledCardTitle>Sistema Simples</StyledCardTitle>
+            <StyledCardTitle>Back-end</StyledCardTitle>
             <StyledCardDescription>
-              Aplicações simples e funcionais para resolver problemas
-              específicos.
+              Projetos focados em servidores e APIs robustas.
             </StyledCardDescription>
             <StyledCardActions>
-              <Link href="/sistema-simples" className="btn-primary">
-                Ver Projetos
-              </Link>
-            </StyledCardActions>
-            <StyledCardBottomBar />
-          </StyledCardContent>
-        </StyledCategoryCard>
-
-        <StyledCategoryCard>
-          <StyledCardContent>
-            <StyledCardTitle>Portfólios</StyledCardTitle>
-            <StyledCardDescription>
-              Projetos pessoais e portfólios interativos.
-            </StyledCardDescription>
-            <StyledCardActions>
-              <Link href="/portfolio" className="btn-primary">
+              <Link href="/back-end" className="btn-primary">
                 Ver Projetos
               </Link>
             </StyledCardActions>
@@ -237,7 +221,7 @@ const Projects = () => {
           <StyledCardContent>
             <StyledCardTitle>Outros</StyledCardTitle>
             <StyledCardDescription>
-              Diversos projetos experimentais e inovadores.
+              Projetos experimentais e inovadores.
             </StyledCardDescription>
             <StyledCardActions>
               <Link href="/outros" className="btn-primary">
