@@ -27,17 +27,14 @@ const StyledFrontEndPage = styled.div`
   color: ${theme.colors.lightestSlate};
   min-height: 100vh;
   padding: 20px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   h1 {
     font-size: ${theme.fontSizes.h3};
     margin-bottom: 20px;
     text-align: center;
-
-    @media (max-width: 1024px) {
-      font-size: ${theme.fontSizes.h4};
-    }
 
     @media (max-width: 768px) {
       font-size: ${theme.fontSizes.md};
@@ -51,24 +48,18 @@ const StyledFrontEndPage = styled.div`
   }
 
   p {
-    font-size: ${theme.fontSizes.lg};
+    font-size: ${theme.fontSizes.md};
     text-align: center;
-    max-width: 600px;
-    margin: 0 auto 20px auto;
-
-    @media (max-width: 1024px) {
-      font-size: ${theme.fontSizes.md};
-    }
+    max-width: 90%;
+    margin: 0 auto;
 
     @media (max-width: 768px) {
       font-size: ${theme.fontSizes.sm};
-      margin: 0 auto 15px auto;
       padding: 0 10px;
     }
 
     @media (max-width: 480px) {
       font-size: ${theme.fontSizes.xs};
-      margin: 0 auto 10px auto;
       padding: 0 5px;
     }
   }
@@ -146,6 +137,8 @@ const StyledSeparator = styled.hr`
 const StyledProject = styled.div`
   text-align: center;
   margin: 20px 0;
+  width: 100%;
+  max-width: 800px;
 
   h2 {
     font-size: ${theme.fontSizes.md};
