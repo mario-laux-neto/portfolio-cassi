@@ -189,42 +189,12 @@ const Projects = () => {
       <StyledCategoriesGrid>
         <StyledCategoryCard>
           <StyledCardContent>
-            <StyledCardTitle>Front-end</StyledCardTitle>
+            <StyledCardTitle>Front-end e Back-end</StyledCardTitle>
             <StyledCardDescription>
-              Projetos focados em interfaces de usuário e design interativo.
+              Projetos focados em interfaces de usuário, design interativo, servidores e APIs robustas.
             </StyledCardDescription>
             <StyledCardActions>
               <Link href="/front-end" className="btn-primary">
-                Ver Projetos
-              </Link>
-            </StyledCardActions>
-            <StyledCardBottomBar />
-          </StyledCardContent>
-        </StyledCategoryCard>
-
-        <StyledCategoryCard>
-          <StyledCardContent>
-            <StyledCardTitle>Back-end</StyledCardTitle>
-            <StyledCardDescription>
-              Projetos focados em servidores e APIs robustas.
-            </StyledCardDescription>
-            <StyledCardActions>
-              <Link href="/back-end" className="btn-primary">
-                Ver Projetos
-              </Link>
-            </StyledCardActions>
-            <StyledCardBottomBar />
-          </StyledCardContent>
-        </StyledCategoryCard>
-
-        <StyledCategoryCard>
-          <StyledCardContent>
-            <StyledCardTitle>Outros</StyledCardTitle>
-            <StyledCardDescription>
-              Projetos experimentais e inovadores.
-            </StyledCardDescription>
-            <StyledCardActions>
-              <Link href="/outros" className="btn-primary">
                 Ver Projetos
               </Link>
             </StyledCardActions>
