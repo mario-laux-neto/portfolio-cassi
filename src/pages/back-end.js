@@ -18,6 +18,19 @@ const StyledBackEndPage = styled.div`
     font-size: ${theme.fontSizes.h3};
     margin-bottom: 20px;
     text-align: center;
+
+    @media (max-width: 1024px) {
+      font-size: ${theme.fontSizes.h4};
+    }
+
+    @media (max-width: 768px) {
+      font-size: ${theme.fontSizes.md};
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: ${theme.fontSizes.sm};
+    }
   }
 
   p {
@@ -25,58 +38,105 @@ const StyledBackEndPage = styled.div`
     text-align: center;
     max-width: 600px;
     margin: 0 auto 40px auto;
+
+    @media (max-width: 1024px) {
+      font-size: ${theme.fontSizes.md};
+    }
+
+    @media (max-width: 768px) {
+      font-size: ${theme.fontSizes.sm};
+      margin: 0 auto 30px auto;
+      padding: 0 10px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: ${theme.fontSizes.xs};
+      margin: 0 auto 20px auto;
+    }
   }
 `;
 
 const CardsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 20px;
+
+  @media (max-width: 1024px) {
+    gap: 15px;
+    padding: 15px;
+  }
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 8px;
+    padding: 5px;
   }
 `;
 
 const StyledProject = styled.div`
   background-color: ${theme.colors.lightNavy};
-  border-radius: 15px;
-  padding: 25px;
+  border-radius: 10px;
+  padding: 20px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid ${theme.colors.lightSlate};
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   }
 
   h2 {
-    font-size: ${theme.fontSizes.xl};
-    margin-bottom: 15px;
+    font-size: ${theme.fontSizes.lg};
+    margin-bottom: 10px;
     color: ${theme.colors.green};
+
+    @media (max-width: 768px) {
+      font-size: ${theme.fontSizes.md};
+    }
+
+    @media (max-width: 480px) {
+      font-size: ${theme.fontSizes.sm};
+    }
   }
 
   p {
     font-size: ${theme.fontSizes.sm};
-    margin-bottom: 20px;
-    line-height: 1.6;
+    margin-bottom: 15px;
     color: ${theme.colors.lightSlate};
+
+    @media (max-width: 768px) {
+      font-size: ${theme.fontSizes.xs};
+    }
+
+    @media (max-width: 480px) {
+      font-size: ${theme.fontSizes.xxs};
+    }
   }
 
   img {
     width: 100%;
-    max-width: 250px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    border: 2px solid ${theme.colors.lightSlate};
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+
+    @media (max-width: 768px) {
+      max-width: 150px;
+    }
+
+    @media (max-width: 480px) {
+      max-width: 120px;
+    }
   }
 `;
 
@@ -105,6 +165,30 @@ const StyledButton = styled.button`
     width: 16px;
     height: 16px;
   }
+
+  @media (max-width: 768px) {
+    top: 15px;
+    left: 15px;
+    padding: 8px 12px;
+    font-size: ${theme.fontSizes.sm};
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    top: 10px;
+    left: 10px;
+    padding: 6px 10px;
+    font-size: ${theme.fontSizes.xs};
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
 `;
 
 const StyledGitHubButton = styled.a`
@@ -132,6 +216,28 @@ const StyledGitHubButton = styled.a`
     width: 20px;
     height: 20px;
     color: ${theme.colors.navy} !important;
+  }
+
+  @media (max-width: 768px) {
+    padding: 8px 12px;
+    font-size: ${theme.fontSizes.sm};
+    gap: 6px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 6px 10px;
+    font-size: ${theme.fontSizes.xs};
+    gap: 4px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 `;
 

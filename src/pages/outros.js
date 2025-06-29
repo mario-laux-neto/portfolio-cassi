@@ -3,31 +3,49 @@ import styled from "styled-components";
 import { theme } from "../../styles/theme";
 import FlashlightEffect from "../components/FlashlightEffect";
 import { useRouter } from "next/router";
+import GlobalStyle from "../../styles/GlobalStyle";
 
 const StyledOutrosPage = styled.div`
   background-color: ${theme.colors.navy};
   color: ${theme.colors.lightestSlate};
-  position: absolute; /* Garantindo que a página ocupe toda a tela */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0; /* Removendo margens */
-  padding: 0; /* Removendo padding */
+  padding: 20px;
 
   h1 {
     font-size: ${theme.fontSizes.h3};
     margin-bottom: 20px;
+    text-align: center;
+
+    @media (max-width: 768px) {
+      font-size: ${theme.fontSizes.md};
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: ${theme.fontSizes.sm};
+      margin-bottom: 10px;
+    }
   }
 
   p {
     font-size: ${theme.fontSizes.md};
     text-align: center;
-    max-width: 600px;
+    max-width: 90%;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+      font-size: ${theme.fontSizes.sm};
+      padding: 0 10px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: ${theme.fontSizes.xs};
+      padding: 0 5px;
+    }
   }
 `;
 
@@ -55,6 +73,16 @@ const StyledButton = styled.button`
   svg {
     width: 16px;
     height: 16px;
+
+    @media (max-width: 768px) {
+      width: 14px;
+      height: 14px;
+    }
+
+    @media (max-width: 480px) {
+      width: 12px;
+      height: 12px;
+    }
   }
 `;
 
@@ -67,6 +95,7 @@ const Outros = () => {
 
   return (
     <>
+      <GlobalStyle />
       <FlashlightEffect />
       <StyledOutrosPage>
         <StyledButton onClick={handleBack}>

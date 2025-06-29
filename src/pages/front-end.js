@@ -34,6 +34,20 @@ const StyledFrontEndPage = styled.div`
     font-size: ${theme.fontSizes.h3};
     margin-bottom: 20px;
     text-align: center;
+
+    @media (max-width: 1024px) {
+      font-size: ${theme.fontSizes.h4};
+    }
+
+    @media (max-width: 768px) {
+      font-size: ${theme.fontSizes.md};
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: ${theme.fontSizes.sm};
+      margin-bottom: 10px;
+    }
   }
 
   p {
@@ -41,6 +55,22 @@ const StyledFrontEndPage = styled.div`
     text-align: center;
     max-width: 600px;
     margin: 0 auto 20px auto;
+
+    @media (max-width: 1024px) {
+      font-size: ${theme.fontSizes.md};
+    }
+
+    @media (max-width: 768px) {
+      font-size: ${theme.fontSizes.sm};
+      margin: 0 auto 15px auto;
+      padding: 0 10px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: ${theme.fontSizes.xs};
+      margin: 0 auto 10px auto;
+      padding: 0 5px;
+    }
   }
 `;
 
@@ -69,6 +99,30 @@ const StyledButton = styled.button`
     width: 16px;
     height: 16px;
   }
+
+  @media (max-width: 768px) {
+    top: 15px;
+    left: 15px;
+    padding: 8px 12px;
+    font-size: ${theme.fontSizes.sm};
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    top: 10px;
+    left: 10px;
+    padding: 6px 10px;
+    font-size: ${theme.fontSizes.xs};
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
 `;
 
 const StyledSeparator = styled.hr`
@@ -77,6 +131,16 @@ const StyledSeparator = styled.hr`
   height: 3px;
   background: ${theme.colors.lightSlate};
   margin: 60px 0 20px 0;
+
+  @media (max-width: 768px) {
+    margin: 40px 0 15px 0;
+    height: 2px;
+  }
+
+  @media (max-width: 480px) {
+    margin: 30px 0 10px 0;
+    height: 1px;
+  }
 `;
 
 const StyledProject = styled.div`
@@ -86,17 +150,46 @@ const StyledProject = styled.div`
   h2 {
     font-size: ${theme.fontSizes.md};
     margin-bottom: 10px;
+
+    @media (max-width: 768px) {
+      font-size: ${theme.fontSizes.sm};
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: ${theme.fontSizes.xs};
+      margin-bottom: 6px;
+    }
   }
 
   p {
     font-size: ${theme.fontSizes.sm};
     margin-bottom: 10px;
+
+    @media (max-width: 768px) {
+      font-size: ${theme.fontSizes.xs};
+      margin-bottom: 8px;
+      padding: 0 10px;
+    }
+
+    @media (max-width: 480px) {
+      margin-bottom: 6px;
+      padding: 0 5px;
+    }
   }
 
   img {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
+
+    @media (max-width: 768px) {
+      border-radius: 8px;
+    }
+
+    @media (max-width: 480px) {
+      border-radius: 6px;
+    }
   }
 
   .skills-list {
@@ -105,11 +198,45 @@ const StyledProject = styled.div`
     justify-content: center;
     list-style: none;
     padding: 0;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      gap: 10px;
+    }
+
+    @media (max-width: 480px) {
+      gap: 8px;
+    }
+
+    li {
+      @media (max-width: 480px) {
+        min-width: 60px;
+      }
+    }
 
     .icon {
       font-size: 24px;
       display: block;
       margin-bottom: 5px;
+
+      @media (max-width: 768px) {
+        font-size: 20px;
+        margin-bottom: 4px;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 18px;
+        margin-bottom: 3px;
+      }
+    }
+
+    p {
+      font-size: ${theme.fontSizes.xs};
+      margin: 0;
+
+      @media (max-width: 480px) {
+        font-size: 10px;
+      }
     }
   }
 
@@ -117,14 +244,30 @@ const StyledProject = styled.div`
   .slick-dots {
     bottom: -30px;
 
+    @media (max-width: 768px) {
+      bottom: -25px;
+    }
+
+    @media (max-width: 480px) {
+      bottom: -20px;
+    }
+
     li {
       margin: 0 5px;
+
+      @media (max-width: 480px) {
+        margin: 0 3px;
+      }
 
       button {
         &:before {
           color: white !important;
           font-size: 12px !important;
           opacity: 0.5 !important;
+
+          @media (max-width: 480px) {
+            font-size: 10px !important;
+          }
         }
       }
 
@@ -148,6 +291,19 @@ const CustomVideoPlayer = styled.video`
 
   &:focus {
     outline: 2px solid ${theme.colors.green};
+  }
+
+  @media (max-width: 768px) {
+    max-width: 350px;
+    margin: 30px auto;
+    border-radius: 12px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 280px;
+    margin: 20px auto;
+    border-radius: 10px;
+    border: 1px solid ${theme.colors.lightSlate};
   }
 `;
 
@@ -1093,8 +1249,7 @@ const FrontEnd = () => {
               <p>JavaScript</p>
             </li>
           </ul>
-          <Slider {...singleSliderSettings}>
-          </Slider>
+          <Slider {...singleSliderSettings}></Slider>
           <div style={{ textAlign: "center", marginTop: "10px" }}>
             <a
               href="https://mario-laux-neto.github.io/calculadora/"

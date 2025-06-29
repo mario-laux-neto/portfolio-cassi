@@ -131,6 +131,31 @@ const StyledTabContent = styled.div`
       }
     }
   }
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    h3 {
+      font-size: ${theme.fontSizes.lg};
+    }
+    p {
+      font-size: ${theme.fontSizes.sm};
+    }
+    ul {
+      font-size: ${theme.fontSizes.sm};
+    }
+  }
+
+  @media (max-width: 480px) {
+    h3 {
+      font-size: ${theme.fontSizes.md};
+    }
+    p {
+      font-size: ${theme.fontSizes.xs};
+    }
+    ul {
+      font-size: ${theme.fontSizes.xs};
+    }
+  }
 `;
 
 const jobsData = [
