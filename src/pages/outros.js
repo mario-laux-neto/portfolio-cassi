@@ -19,16 +19,6 @@ const StyledOutrosPage = styled.div`
     font-size: ${theme.fontSizes.h3};
     margin-bottom: 20px;
     text-align: center;
-
-    @media (max-width: 768px) {
-      font-size: ${theme.fontSizes.md};
-      margin-bottom: 15px;
-    }
-
-    @media (max-width: 480px) {
-      font-size: ${theme.fontSizes.sm};
-      margin-bottom: 10px;
-    }
   }
 
   p {
@@ -36,16 +26,6 @@ const StyledOutrosPage = styled.div`
     text-align: center;
     max-width: 90%;
     margin: 0 auto;
-
-    @media (max-width: 768px) {
-      font-size: ${theme.fontSizes.sm};
-      padding: 0 10px;
-    }
-
-    @media (max-width: 480px) {
-      font-size: ${theme.fontSizes.xs};
-      padding: 0 5px;
-    }
   }
 `;
 
@@ -73,16 +53,6 @@ const StyledButton = styled.button`
   svg {
     width: 16px;
     height: 16px;
-
-    @media (max-width: 768px) {
-      width: 14px;
-      height: 14px;
-    }
-
-    @media (max-width: 480px) {
-      width: 12px;
-      height: 12px;
-    }
   }
 `;
 
