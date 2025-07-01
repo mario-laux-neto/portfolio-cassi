@@ -6,6 +6,12 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  compiler: {
+    styledComponents: true,
+  },
+  experimental: {
+    optimizePackageImports: ["styled-components"],
+  },
 };
 
 module.exports = nextConfig;
