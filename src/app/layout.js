@@ -2,12 +2,12 @@
 import StyledComponentsRegistry from "../lib/registry";
 import { Providers } from "./providers";
 import Header from "@/components/Header";
-import FlashlightEffect from "@/components/FlashlightEffect";
 import "../../styles/numbered-headings.css";
 
 export const metadata = {
-  title: "Mário Laux Neto | Desenvolvedor",
-  description: "Portfólio Pessoal",
+  title: "Cassi Fisioterapeuta | Portfólio Profissional",
+  description:
+    "Fisioterapeuta especializada em Neurologia e Reabilitação. Profissional comprometida com a excelência no atendimento e desenvolvimento contínuo.",
 };
 
 export default function RootLayout({ children }) {
@@ -16,7 +16,6 @@ export default function RootLayout({ children }) {
       <body>
         <StyledComponentsRegistry>
           <Providers>
-            <FlashlightEffect />
             <Header />
             <div id="content">{children}</div>
           </Providers>

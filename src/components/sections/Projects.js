@@ -4,7 +4,12 @@ import styled from "styled-components";
 import { theme } from "../../../styles/theme";
 import Link from "next/link";
 import {
-  FaGithub,
+  FaBone,
+  FaHeart,
+  FaBaby,
+  FaBrain,
+  FaRunning,
+  FaHandsHelping,
   FaEye,
   FaExternalLinkAlt,
   FaTimes,
@@ -16,6 +21,8 @@ import {
   FaCompress,
   FaVolumeUp,
   FaVolumeMute,
+  FaWhatsapp,
+  FaCalendarAlt,
 } from "react-icons/fa";
 import { useState, useEffect, useRef } from "react";
 
@@ -32,7 +39,7 @@ const StyledProjectsSection = styled.section`
 const StyledTitle = styled.h2`
   font-size: clamp(24px, 5vw, 32px);
   margin: 0 0 50px 0;
-  color: ${theme.colors.lightestSlate};
+  color: ${theme.colors.primary};
   font-weight: 600;
 `;
 
@@ -83,18 +90,20 @@ const StyledPreview = styled.div`
 `;
 
 const StyledCategoryCard = styled.div`
-  background-color: ${theme.colors.lightNavy};
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(2, 12, 27, 0.2);
+  background-color: ${theme.colors.white};
+  border-radius: 12px;
+  box-shadow: ${theme.shadows.md};
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
+  border: 1px solid ${theme.colors.lightGray};
 
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 25px rgba(2, 12, 27, 0.4);
+    transform: translateY(-8px);
+    box-shadow: ${theme.shadows.lg};
+    border-color: ${theme.colors.primary};
   }
 `;
 
@@ -108,34 +117,22 @@ const StyledCardContent = styled.div`
 const StyledCardTitle = styled.h3`
   font-size: 1.5rem;
   font-weight: 600;
-  color: ${theme.colors.lightestSlate};
+  color: ${theme.colors.primary};
   margin-top: 0;
   margin-bottom: 0.5rem;
-`;
-
-const StyledCardTech = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-
-  .icon {
-    color: ${theme.colors.green};
-    font-size: 1.5rem;
-  }
 `;
 
 const StyledCardDescription = styled.p`
   font-size: 0.9rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
-  color: ${theme.colors.lightSlate};
+  color: ${theme.colors.mediumGray};
   flex-grow: 1;
 `;
 
 const StyledCardActions = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 0.75rem;
   margin-top: auto;
 
@@ -166,40 +163,37 @@ const StyledCardActions = styled.div`
     }
   }
 
-  .btn-github {
-    background-color: ${theme.colors.lightNavy};
-    color: ${theme.colors.lightSlate};
-    border-color: ${theme.colors.green};
+  .btn-whatsapp {
+    background-color: ${theme.colors.success};
+    color: ${theme.colors.white};
+    border-color: ${theme.colors.success};
   }
 
-  .btn-github:hover {
-    background-color: ${theme.colors.green};
-    color: ${theme.colors.lightestNavy};
-    border-color: ${theme.colors.green};
+  .btn-whatsapp:hover {
+    background-color: #1e8449;
+    border-color: #1e8449;
   }
 
-  .btn-preview {
-    background-color: ${theme.colors.lightSlate};
-    color: ${theme.colors.navy};
-    border-color: transparent;
-    cursor: pointer;
+  .btn-agendar {
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.white};
+    border-color: ${theme.colors.primary};
   }
 
-  .btn-preview:hover {
-    background-color: ${theme.colors.slate};
-    color: ${theme.colors.navy};
-    border-color: transparent;
+  .btn-agendar:hover {
+    background-color: ${theme.colors.primaryDark};
+    border-color: ${theme.colors.primaryDark};
   }
 
-  .btn-live {
-    background-color: ${theme.colors.green};
-    color: ${theme.colors.lightestNavy};
-    border-color: ${theme.colors.green};
+  .btn-saiba-mais {
+    background-color: transparent;
+    color: ${theme.colors.primary};
+    border-color: ${theme.colors.primary};
   }
 
-  .btn-live:hover {
-    background-color: ${theme.colors.lightGreen};
-    border-color: ${theme.colors.lightGreen};
+  .btn-saiba-mais:hover {
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.white};
   }
 
   /* Responsividade para cards com 3 botões */
@@ -810,119 +804,109 @@ const Projects = () => {
     };
   }, []);
 
-  // Dados dos projetos com imagens e vídeos
-  const projectsData = {
-    "delive-express": {
-      title: "DeliveExpress",
+  // Dados das áreas de atuação
+  const areasData = {
+    "fisioterapia-ortopedica": {
+      title: "Fisioterapia Ortopédica",
       description:
-        "Sistema completo de delivery com interface moderna, gerenciamento de pedidos e integração com APIs de pagamento.",
+        "Tratamento especializado de lesões musculoesqueléticas, fraturas, entorses e problemas posturais. Foco na reabilitação funcional e prevenção de lesões.",
       type: "images",
-      media: [
-        "/images/deliveexpress/login.png",
-        "/images/deliveexpress/cadastro.png",
-        "/images/deliveexpress/home.png",
-        "/images/deliveexpress/produtos.png",
-        "/images/deliveexpress/cupons.png",
-        "/images/deliveexpress/carrinho.png",
-        "/images/deliveexpress/endereco.png",
-        "/images/deliveexpress/pagamento.png",
-        "/images/deliveexpress/finalizar.png",
-      ],
-      technologies: ['TypeScript',
-        'JavaScript',
-        'Next.js',
-        'React',
-        'CSS Modules',
-        'Yarn',
-        'ESLint',]
-    },
-    "coins-for-study": {
-      title: "Coins For Study",
-      description:
-        "Plataforma gamificada para incentivar estudos, com sistema de recompensas e acompanhamento de progresso.",
-      type: "video",
-      media: ["/videos/deliveexpress-demo.mp4"],
-        technologies: ['React Native',
-          'Expo',
-          '@react-navigation/native',
-          '@react-navigation/stack',
-          '@react-navigation/bottom-tabs',
-          '@react-navigation/drawer',
-          '@react-navigation/material-top-tabs',
-          '@expo/vector-icons',
-          'React Context API',
-          'React Hooks',
-        ],
-    },
-    "rocketseat-login": {
-      title: "Cópia Login Rocketseat",
-      description:
-        "Reprodução fiel da interface de login da Rocketseat, demonstrando habilidades em UI/UX e desenvolvimento front-end.",
-      type: "images",
-      media: ["/images/rocket/login.png"],
-      technologies: ["HTML5", "CSS3", "Bootstrap"],
-    },
-    massoterapia: {
-      title: "Massoterapia",
-      description:
-        "Website profissional para clínica de massoterapia com agendamento online, galeria de serviços e área do cliente.",
-      type: "images",
-      media: [
-        "/images/previamasso.png",
-      ],
-      technologies: [
-        'FaHtml5', 'CSS3', 'Javascript', 
+      media: ["/images/ortopedica1.jpg", "/images/ortopedica2.jpg"],
+      conditions: [
+        "Dores nas costas e coluna",
+        "Lesões esportivas",
+        "Fraturas e entorses",
+        "Artrite e artrose",
+        "Problemas posturais",
+        "Reabilitação pós-cirúrgica",
       ],
     },
-    "yugioh-game": {
-      title: "Yu-Gi-Oh Interativo",
+    "fisioterapia-neurologica": {
+      title: "Fisioterapia Neurológica",
       description:
-        "Jogo interativo baseado no universo Yu-Gi-Oh com mecânicas de cartas, batalhas e coleção de decks.",
+        "Reabilitação de pacientes com distúrbios neurológicos, focando na melhoria da função motora, equilíbrio e coordenação.",
       type: "images",
-      media: [
-        "/images/previayugioh.png",
+      media: ["/images/neurologica1.jpg", "/images/neurologica2.jpg"],
+      conditions: [
+        "AVC (Derrame)",
+        "Parkinson",
+        "Esclerose Múltipla",
+        "Paralisia cerebral",
+        "Lesões medulares",
+        "Distúrbios do equilíbrio",
       ],
-      technologies: ["JavaScript", "HTML5", "CSS3",],
     },
-    "sistema-vacinacao": {
-      title: "Sistema Controle de Vacinação",
+    "saude-da-mulher": {
+      title: "Saúde da Mulher",
       description:
-        "Sistema robusto para controle e gerenciamento de campanhas de vacinação com relatórios e dashboard administrativo.",
+        "Cuidados especializados para mulheres em todas as fases da vida, incluindo gestação, pós-parto e saúde pélvica.",
       type: "images",
-      media: [
-        "/images/pig/login.png",
-        "/images/pig/home.png",
-        "/images/pig/cadvacinas.png",
-        "/images/pig/atividade.png",
-        "/images/pig/form1.png",
-        "/images/pig/form2.png",
-        "/images/pig/gereusu.png",
-        "/images/pig/senha.png",
-        "/images/pig/excel.png",
+      media: ["/images/mulher1.jpg", "/images/mulher2.jpg"],
+      conditions: [
+        "Fisioterapia obstétrica",
+        "Preparação para o parto",
+        "Recuperação pós-parto",
+        "Incontinência urinária",
+        "Disfunções do assoalho pélvico",
+        "Dores pélvicas",
       ],
-      technologies: ['Next.js',
-        'React',
-        'Tailwind CSS',
-        'Axios',
-        'Lucide React',
-        'ESLint',
-        'PostCSS',
-        'Turbopack',
-        'JWT',
-        'LocalStorage',
+    },
+    "fisioterapia-pediatrica": {
+      title: "Fisioterapia Pediátrica",
+      description:
+        "Tratamento especializado para bebês, crianças e adolescentes, promovendo o desenvolvimento motor adequado.",
+      type: "images",
+      media: ["/images/pediatrica1.jpg", "/images/pediatrica2.jpg"],
+      conditions: [
+        "Atrasos no desenvolvimento",
+        "Paralisia cerebral infantil",
+        "Problemas respiratórios",
+        "Disfunções motoras",
+        "Estimulação precoce",
+        "Escoliose infantil",
+      ],
+    },
+    "fisioterapia-respiratoria": {
+      title: "Fisioterapia Respiratória",
+      description:
+        "Tratamento de disfunções respiratórias e reabilitação pulmonar para melhorar a capacidade respiratória.",
+      type: "images",
+      media: ["/images/respiratoria1.jpg", "/images/respiratoria2.jpg"],
+      conditions: [
+        "Asma e bronquite",
+        "DPOC",
+        "Pneumonia",
+        "Reabilitação pulmonar",
+        "Pós-COVID",
+        "Disfunções respiratórias",
+      ],
+    },
+    "fisioterapia-esportiva": {
+      title: "Fisioterapia Esportiva",
+      description:
+        "Prevenção e tratamento de lesões esportivas, otimização do desempenho atlético e retorno seguro ao esporte.",
+      type: "images",
+      media: ["/images/esportiva1.jpg", "/images/esportiva2.jpg"],
+      conditions: [
+        "Lesões musculares",
+        "Entorses articulares",
+        "Tendinites",
+        "Prevenção de lesões",
+        "Otimização de performance",
+        "Retorno ao esporte",
       ],
     },
   };
 
-  const openModal = async (projectKey) => {
-    const project = projectsData[projectKey];
-    setSelectedProject(project);
+  const openModal = async (areaKey) => {
+    const area = areasData[areaKey];
+    setSelectedProject(area);
     setCurrentImageIndex(0);
 
     // Se for um projeto de vídeo, verificar se o vídeo existe
-    if (project.type === "video") {
+    if (area.type === "video") {
       setVideoLoading(true);
-      const videoExists = await checkVideoExists(project.media[0]);
+      const videoExists = await checkVideoExists(area.media[0]);
       if (!videoExists) {
         setVideoError(true);
       }
@@ -955,166 +939,232 @@ const Projects = () => {
     setCurrentImageIndex(index);
   };
   return (
-    <StyledProjectsSection id="projects">
-      <StyledTitle className="numbered-heading">Projetos</StyledTitle>
+    <StyledProjectsSection id="areas">
+      <StyledTitle className="numbered-heading">Áreas de Atuação</StyledTitle>
 
       <StyledCategoriesGrid>
         <StyledCategoryCard>
           <StyledCardContent>
-            <StyledCardTitle>DeliveExpress</StyledCardTitle>
+            <StyledCardTitle>
+              <FaBone style={{ marginRight: "8px", color: "#2E86C1" }} />
+              Fisioterapia Ortopédica
+            </StyledCardTitle>
             <StyledCardDescription>
-              Sistema completo de delivery com interface moderna, gerenciamento
-              de pedidos e integração com APIs de pagamento.
-            </StyledCardDescription>
-            <StyledCardActions className="two-buttons">
-              <Link
-                href="https://github.com/usuario/delive-express"
-                className="btn-github"
-              >
-                <FaGithub /> Repositório
-              </Link>
-              <button
-                onClick={() => openModal("delive-express")}
-                className="btn-preview"
-              >
-                <FaEye /> Prévia
-              </button>
-            </StyledCardActions>
-            <StyledCardBottomBar />
-          </StyledCardContent>
-        </StyledCategoryCard>
-
-        <StyledCategoryCard>
-          <StyledCardContent>
-            <StyledCardTitle>Coins For Study</StyledCardTitle>
-            <StyledCardDescription>
-              Plataforma gamificada para incentivar estudos, com sistema de
-              recompensas e acompanhamento de progresso.
-            </StyledCardDescription>
-            <StyledCardActions className="two-buttons">
-              <Link
-                href="https://github.com/usuario/coins-for-study"
-                className="btn-github"
-              >
-                <FaGithub /> Repositório
-              </Link>
-              <button
-                onClick={() => openModal("coins-for-study")}
-                className="btn-preview"
-              >
-                <FaPlay /> Vídeo Demo
-              </button>
-            </StyledCardActions>
-            <StyledCardBottomBar />
-          </StyledCardContent>
-        </StyledCategoryCard>
-
-        <StyledCategoryCard>
-          <StyledCardContent>
-            <StyledCardTitle>Cópia Login Rocketseat</StyledCardTitle>
-            <StyledCardDescription>
-              Reprodução fiel da interface de login da Rocketseat, demonstrando
-              habilidades em UI/UX e desenvolvimento front-end.
-            </StyledCardDescription>
-            <StyledCardActions className="two-buttons">
-              <Link
-                href="https://github.com/usuario/rocketseat-login"
-                className="btn-github"
-              >
-                <FaGithub /> Repositório
-              </Link>
-              <button
-                onClick={() => openModal("rocketseat-login")}
-                className="btn-preview"
-              >
-                <FaEye /> Prévia
-              </button>
-            </StyledCardActions>
-            <StyledCardBottomBar />
-          </StyledCardContent>
-        </StyledCategoryCard>
-
-        <StyledCategoryCard>
-          <StyledCardContent>
-            <StyledCardTitle>Massoterapia</StyledCardTitle>
-            <StyledCardDescription>
-              Website profissional para clínica de massoterapia com agendamento
-              online, galeria de serviços e área do cliente.
+              Tratamento especializado de lesões musculoesqueléticas, fraturas,
+              entorses e problemas posturais. Foco na reabilitação funcional e
+              prevenção de lesões.
             </StyledCardDescription>
             <StyledCardActions className="three-buttons">
-              <Link
-                href="https://github.com/usuario/massoterapia"
-                className="btn-github"
+              <a
+                href="https://wa.me/5554996837282?text=Gostaria de saber mais sobre Fisioterapia Ortopédica"
+                className="btn-whatsapp"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <FaGithub /> Repositório
-              </Link>
+                <FaWhatsapp /> WhatsApp
+              </a>
               <button
-                onClick={() => openModal("massoterapia")}
-                className="btn-preview"
+                onClick={() => openModal("fisioterapia-ortopedica")}
+                className="btn-saiba-mais"
               >
-                <FaEye /> Prévia
+                <FaEye /> Saiba Mais
               </button>
-              <Link
-                href="https://mario-laux-neto.github.io/sitemassoterapia/"
-                className="btn-live"
+              <a
+                href="https://wa.me/5554996837282?text=Gostaria de agendar uma avaliação de Fisioterapia Ortopédica"
+                className="btn-agendar"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <FaExternalLinkAlt /> Site
-              </Link>
+                <FaCalendarAlt /> Agendar
+              </a>
             </StyledCardActions>
-            <StyledCardBottomBar />
           </StyledCardContent>
         </StyledCategoryCard>
 
         <StyledCategoryCard>
           <StyledCardContent>
-            <StyledCardTitle>Yu-Gi-Oh Interativo</StyledCardTitle>
+            <StyledCardTitle>
+              <FaBrain style={{ marginRight: "8px", color: "#2E86C1" }} />
+              Fisioterapia Neurológica
+            </StyledCardTitle>
             <StyledCardDescription>
-              Jogo interativo baseado no universo Yu-Gi-Oh com mecânicas de
-              cartas, batalhas e coleção de decks.
+              Reabilitação de pacientes com distúrbios neurológicos, focando na
+              melhoria da função motora, equilíbrio e coordenação.
             </StyledCardDescription>
             <StyledCardActions className="three-buttons">
-              <Link
-                href="https://github.com/usuario/yugioh-game"
-                className="btn-github"
+              <a
+                href="https://wa.me/5554996837282?text=Gostaria de saber mais sobre Fisioterapia Neurológica"
+                className="btn-whatsapp"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <FaGithub /> Repositório
-              </Link>
+                <FaWhatsapp /> WhatsApp
+              </a>
               <button
-                onClick={() => openModal("yugioh-game")}
-                className="btn-preview"
+                onClick={() => openModal("fisioterapia-neurologica")}
+                className="btn-saiba-mais"
               >
-                <FaEye /> Prévia
+                <FaEye /> Saiba Mais
               </button>
-              <Link href="https://mario-laux-neto.github.io/projeto-clone-yu-gi-oh/" className="btn-live">
-                <FaExternalLinkAlt /> Site
-              </Link>
+              <a
+                href="https://wa.me/5554996837282?text=Gostaria de agendar uma avaliação de Fisioterapia Neurológica"
+                className="btn-agendar"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaCalendarAlt /> Agendar
+              </a>
             </StyledCardActions>
-            <StyledCardBottomBar />
           </StyledCardContent>
         </StyledCategoryCard>
 
         <StyledCategoryCard>
           <StyledCardContent>
-            <StyledCardTitle>Sistema Controle de Vacinação</StyledCardTitle>
+            <StyledCardTitle>
+              <FaHeart style={{ marginRight: "8px", color: "#2E86C1" }} />
+              Saúde da Mulher
+            </StyledCardTitle>
             <StyledCardDescription>
-              Sistema robusto para controle e gerenciamento de campanhas de
-              vacinação com relatórios e dashboard administrativo.
+              Cuidados especializados para mulheres em todas as fases da vida,
+              incluindo gestação, pós-parto e saúde pélvica.
             </StyledCardDescription>
-            <StyledCardActions className="two-buttons">
-              <Link
-                href="https://github.com/usuario/sistema-vacinacao"
-                className="btn-github"
+            <StyledCardActions className="three-buttons">
+              <a
+                href="https://wa.me/5554996837282?text=Gostaria de saber mais sobre Saúde da Mulher"
+                className="btn-whatsapp"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <FaGithub /> Repositório
-              </Link>
+                <FaWhatsapp /> WhatsApp
+              </a>
               <button
-                onClick={() => openModal("sistema-vacinacao")}
-                className="btn-preview"
+                onClick={() => openModal("saude-da-mulher")}
+                className="btn-saiba-mais"
               >
-                <FaEye /> Prévia
+                <FaEye /> Saiba Mais
               </button>
+              <a
+                href="https://wa.me/5554996837282?text=Gostaria de agendar uma avaliação de Saúde da Mulher"
+                className="btn-agendar"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaCalendarAlt /> Agendar
+              </a>
             </StyledCardActions>
-            <StyledCardBottomBar />
+          </StyledCardContent>
+        </StyledCategoryCard>
+
+        <StyledCategoryCard>
+          <StyledCardContent>
+            <StyledCardTitle>
+              <FaBaby style={{ marginRight: "8px", color: "#2E86C1" }} />
+              Fisioterapia Pediátrica
+            </StyledCardTitle>
+            <StyledCardDescription>
+              Tratamento especializado para bebês, crianças e adolescentes,
+              promovendo o desenvolvimento motor adequado.
+            </StyledCardDescription>
+            <StyledCardActions className="three-buttons">
+              <a
+                href="https://wa.me/5554996837282?text=Gostaria de saber mais sobre Fisioterapia Pediátrica"
+                className="btn-whatsapp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaWhatsapp /> WhatsApp
+              </a>
+              <button
+                onClick={() => openModal("fisioterapia-pediatrica")}
+                className="btn-saiba-mais"
+              >
+                <FaEye /> Saiba Mais
+              </button>
+              <a
+                href="https://wa.me/5554996837282?text=Gostaria de agendar uma avaliação de Fisioterapia Pediátrica"
+                className="btn-agendar"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaCalendarAlt /> Agendar
+              </a>
+            </StyledCardActions>
+          </StyledCardContent>
+        </StyledCategoryCard>
+
+        <StyledCategoryCard>
+          <StyledCardContent>
+            <StyledCardTitle>
+              <FaRunning style={{ marginRight: "8px", color: "#2E86C1" }} />
+              Fisioterapia Respiratória
+            </StyledCardTitle>
+            <StyledCardDescription>
+              Tratamento de disfunções respiratórias e reabilitação pulmonar
+              para melhorar a capacidade respiratória.
+            </StyledCardDescription>
+            <StyledCardActions className="three-buttons">
+              <a
+                href="https://wa.me/5554996837282?text=Gostaria de saber mais sobre Fisioterapia Respiratória"
+                className="btn-whatsapp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaWhatsapp /> WhatsApp
+              </a>
+              <button
+                onClick={() => openModal("fisioterapia-respiratoria")}
+                className="btn-saiba-mais"
+              >
+                <FaEye /> Saiba Mais
+              </button>
+              <a
+                href="https://wa.me/5554996837282?text=Gostaria de agendar uma avaliação de Fisioterapia Respiratória"
+                className="btn-agendar"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaCalendarAlt /> Agendar
+              </a>
+            </StyledCardActions>
+          </StyledCardContent>
+        </StyledCategoryCard>
+
+        <StyledCategoryCard>
+          <StyledCardContent>
+            <StyledCardTitle>
+              <FaHandsHelping
+                style={{ marginRight: "8px", color: "#2E86C1" }}
+              />
+              Fisioterapia Esportiva
+            </StyledCardTitle>
+            <StyledCardDescription>
+              Prevenção e tratamento de lesões esportivas, otimização do
+              desempenho atlético e retorno seguro ao esporte.
+            </StyledCardDescription>
+            <StyledCardActions className="three-buttons">
+              <a
+                href="https://wa.me/5554996837282?text=Gostaria de saber mais sobre Fisioterapia Esportiva"
+                className="btn-whatsapp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaWhatsapp /> WhatsApp
+              </a>
+              <button
+                onClick={() => openModal("fisioterapia-esportiva")}
+                className="btn-saiba-mais"
+              >
+                <FaEye /> Saiba Mais
+              </button>
+              <a
+                href="https://wa.me/5554996837282?text=Gostaria de agendar uma avaliação de Fisioterapia Esportiva"
+                className="btn-agendar"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaCalendarAlt /> Agendar
+              </a>
+            </StyledCardActions>
           </StyledCardContent>
         </StyledCategoryCard>
       </StyledCategoriesGrid>

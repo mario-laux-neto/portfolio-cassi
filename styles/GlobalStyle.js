@@ -1,9 +1,9 @@
-// styles/GlobalStyle.js (Versão Revisada e Melhorada)
-import { createGlobalStyle } from 'styled-components';
-import { theme } from './theme';
+// styles/GlobalStyle.js - Fisioterapia
+import { createGlobalStyle } from "styled-components";
+import { theme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
-  /* 1. Reset universal e box-sizing (A adição mais importante) */
+  /* 1. Reset universal e box-sizing */
   *,
   *::before,
   *::after {
@@ -12,32 +12,32 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
-  /* 2. Estilos base para HTML e Body para garantir consistência */
+  /* 2. Estilos base para HTML e Body */
   html {
     height: 100%;
     width: 100%;
   }
 
-  /* 3. Estilos específicos do Body */
+  /* 3. Estilos específicos do Body - Fisioterapia */
   body {
     width: 100%;
-    min-height: 100%; // Usar min-height aqui é bom para o body se esticar com o conteúdo
+    min-height: 100%;
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: ${theme.colors.navy};
-    color: ${theme.colors.slate};
+    background-color: ${theme.colors.lightGray};
+    color: ${theme.colors.darkGray};
     font-family: ${theme.fonts.main};
     font-size: ${theme.fontSizes.md};
-    line-height: 1.5; /* Melhora a legibilidade do texto */
+    line-height: 1.6;
   }
 
-  /* O resto do seu código está ótimo e pode ser mantido como está */
   h1, h2, h3, h4, h5, h6 {
-    font-family: ${theme.fonts.main};
+    font-family: ${theme.fonts.heading};
     font-weight: 600;
-    color: ${theme.colors.lightestSlate};
-    margin: 0 0 10px 0;
+    color: ${theme.colors.primary};
+    margin: 0 0 ${theme.spacing.md} 0;
+    letter-spacing: -0.02em;
   }
   
   section {
@@ -53,9 +53,29 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
     position: relative;
     transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    
     &:hover,
     &:focus {
-      color: ${theme.colors.green};
+      color: ${theme.colors.primary};
+    }
+  }
+
+  /* Estilo para botões de CTA */
+  .cta-button {
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.white};
+    border: 2px solid ${theme.colors.primary};
+    border-radius: ${theme.borderRadius.md};
+    padding: ${theme.spacing.md} ${theme.spacing.lg};
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: ${theme.shadows.md};
+
+    &:hover {
+      background-color: ${theme.colors.primaryDark};
+      border-color: ${theme.colors.primaryDark};
+      transform: translateY(-2px);
+      box-shadow: ${theme.shadows.lg};
     }
   }
 `;

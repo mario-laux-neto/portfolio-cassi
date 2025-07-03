@@ -3,148 +3,254 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { theme } from "../../../styles/theme";
+import {
+  FaLinkedin,
+  FaEnvelope,
+  FaPhone,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 
 const StyledHeroSection = styled.section`
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   min-height: 100vh;
-  height: 100vh;
-  padding: 120px 0 0 0;
+  padding: 120px 50px 50px 50px;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    ${theme.colors.lightGray} 0%,
+    rgba(46, 134, 193, 0.05) 100%
+  );
+  position: relative;
 
   @media (max-width: 768px) {
     min-height: 80vh;
-    padding: 100px 0 0 0;
-  }
-
-  @media (max-width: 480px) {
-    padding: 80px 0 0 0;
+    padding: 100px 25px 50px 25px;
   }
 `;
 
-const StyledOverline = styled.h1`
-  color: ${theme.colors.green};
-  margin: 0 0 30px 4px;
-  font-size: clamp(${theme.fontSizes.sm}, 5vw, ${theme.fontSizes.md});
-  font-family: ${theme.fonts.mono};
-  font-weight: 400;
+const StyledProfileImage = styled.div`
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    ${theme.colors.primary},
+    ${theme.colors.success}
+  );
+  padding: 4px;
+  margin-bottom: 30px;
 
-  @media (max-width: 480px) {
-    margin: 0 0 20px 2px;
+  .image-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: ${theme.colors.white};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    color: ${theme.colors.primary};
+    font-weight: bold;
   }
-`;
 
-const StyledTitle = styled.h2`
-  font-size: clamp(40px, 8vw, 80px);
-  font-weight: 600;
-  color: ${theme.colors.lightestSlate};
-  line-height: 1.1;
-  margin: 0 0 50px 0;
+  @media (max-width: 768px) {
+    width: 150px;
+    height: 150px;
 
-  @media (max-width: 480px) {
-    font-size: clamp(32px, 8vw, 60px);
-    margin: 0 0 15px 0;
-  }
-`;
-
-const StyledSubtitle = styled.h3`
-  font-size: clamp(40px, 8vw, 80px);
-  font-weight: 600;
-  color: ${theme.colors.slate};
-  line-height: 1.1;
-  margin: 0 0 30px;
-
-  @media (max-width: 480px) {
-    font-size: clamp(32px, 8vw, 60px);
-    margin: 0 0 20px;
-  }
-`;
-
-const StyledDescription = styled.div`
-  margin: 20px 0 0;
-  max-width: 540px;
-
-  p {
-    font-size: ${theme.fontSizes.xl};
-    line-height: 1.3;
-    color: ${theme.colors.slate};
-    margin: 0;
-
-    @media (max-width: 768px) {
-      font-size: ${theme.fontSizes.lg};
+    .image-inner {
+      font-size: 45px;
     }
   }
 `;
 
-const StyledEmailLink = styled.a`
-  color: ${theme.colors.green};
-  background-color: transparent;
-  border: 1px solid ${theme.colors.green};
-  border-radius: 4px;
-  padding: 1.25rem 1.75rem;
-  font-size: ${theme.fontSizes.sm};
-  font-family: ${theme.fonts.mono};
-  line-height: 1;
+const StyledName = styled.h1`
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 700;
+  color: ${theme.colors.primary};
+  line-height: 1.2;
+  margin-bottom: 10px;
+  max-width: 800px;
+`;
+
+const StyledTitle = styled.h2`
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 500;
+  color: ${theme.colors.success};
+  margin-bottom: 20px;
+  max-width: 600px;
+`;
+
+const StyledSubtitle = styled.p`
+  font-size: clamp(16px, 2.5vw, 20px);
+  color: ${theme.colors.mediumGray};
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 700px;
+`;
+
+const StyledCredentials = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const StyledCredential = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: ${theme.colors.primary};
+  font-weight: 500;
+
+  svg {
+    color: ${theme.colors.success};
+    font-size: 16px;
+  }
+`;
+
+const StyledContactLinks = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+`;
+
+const StyledContactLink = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: ${theme.colors.white};
+  color: ${theme.colors.primary};
   text-decoration: none;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-  margin-top: 50px;
-  display: inline-block;
+  border-radius: ${theme.borderRadius.md};
+  border: 2px solid ${theme.colors.primary};
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: ${theme.shadows.sm};
 
   &:hover {
-    background-color: rgba(100, 255, 218, 0.1);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+    background: ${theme.colors.primary};
+    color: ${theme.colors.white};
+    transform: translateY(-2px);
+    box-shadow: ${theme.shadows.md};
+  }
+
+  svg {
+    font-size: 18px;
   }
 
   @media (max-width: 768px) {
-    margin-top: 40px;
-    padding: 18px 50px;
+    padding: 10px 16px;
+    font-size: 14px;
+
+    svg {
+      font-size: 16px;
+    }
   }
 `;
 
 const Hero = () => {
-  const one = <StyledOverline>Olá, meu nome é</StyledOverline>;
-  const two = <StyledTitle>Mário Laux Neto</StyledTitle>;
-  const three = <StyledSubtitle>Full-Stack em desenvolvimento</StyledSubtitle>;
-  const four = (
-    <StyledDescription>
-      <p>
-        Graduando em Sistemas de Informação e desenvolvedor focado no
-        ecossistema JavaScript. Atualmente, como estagiário no Centro de
-        Residência em Software do Pollen Parque, desenvolvo projetos práticos
-        com HTML, CSS, React.js e Next.js. Minha experiência anterior nas áreas
-        administrativa e contábil me proporcionou forte organização e atenção
-        aos detalhes, competências que aplico hoje na criação de software de
-        qualidade.
-      </p>
-    </StyledDescription>
-  );
-  const five = (
-    <StyledEmailLink
-      href="https://wa.me/5554996837282"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Entre em contato!
-    </StyledEmailLink>
-  );
-
-  const items = [one, two, three, four, five];
-
   return (
     <StyledHeroSection id="home">
-      {items.map((item, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: i * 0.1 }}
-        >
-          {item}
-        </motion.div>
-      ))}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <StyledProfileImage>
+          <div className="image-inner">MN</div>
+        </StyledProfileImage>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        <StyledName>Cassiane Amaral</StyledName>
+        <StyledTitle>Estudante de Fisioterapia</StyledTitle>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+      >
+        <StyledSubtitle>
+          Profissional dedicada à reabilitação e bem-estar, com foco em
+          tratamentos baseados em evidências científicas e cuidado humanizado.
+        </StyledSubtitle>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+      >
+        <StyledCredentials>
+          <StyledCredential>
+            <FaMapMarkerAlt />
+            CREFITO-XX XXXXXX-F
+          </StyledCredential>
+          <StyledCredential>
+            <FaMapMarkerAlt />
+            Especialista em Fisioterapia Traumato-Ortopédica
+          </StyledCredential>
+          <StyledCredential>
+            <FaMapMarkerAlt />
+            10+ anos de experiência
+          </StyledCredential>
+        </StyledCredentials>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
+      >
+        <StyledContactLinks>
+          <StyledContactLink
+            href="mailto:mario.fisio@email.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaEnvelope />
+            E-mail
+          </StyledContactLink>
+          <StyledContactLink
+            href="https://linkedin.com/in/mario-fisio"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin />
+            LinkedIn
+          </StyledContactLink>
+          <StyledContactLink
+            href="tel:+55XXXXXXXXXXX"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaPhone />
+            Contacto
+          </StyledContactLink>
+        </StyledContactLinks>
+      </motion.div>
     </StyledHeroSection>
   );
 };

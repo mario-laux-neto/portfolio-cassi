@@ -14,12 +14,13 @@ const StyledHeader = styled.header`
   padding: 0px 50px;
   width: 100%;
   height: 70px;
-  background-color: rgba(10, 25, 47, 0.85);
+  background-color: rgba(248, 249, 250, 0.95);
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
   backdrop-filter: blur(10px);
   transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  border-bottom: 1px solid ${theme.colors.primary}20;
 
   @media (max-width: 1080px) {
     padding: 0 40px;
@@ -37,22 +38,31 @@ const StyledLogo = styled.div`
   align-items: center;
 
   a {
-    color: ${theme.colors.green};
+    color: ${theme.colors.primary};
     width: 42px;
     height: 42px;
-    border: 2px solid ${theme.colors.green};
+    border: 2px solid ${theme.colors.primary};
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    font-family: ${theme.fonts.mono};
+    font-family: ${theme.fonts.heading};
     font-size: 20px;
+    font-weight: 600;
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    &:hover {
+      background-color: ${theme.colors.primary};
+      color: ${theme.colors.white};
+      transform: translateY(-3px);
+    }
+  }
     font-weight: 400;
     transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 
     &:hover {
-      background-color: rgba(100, 255, 218, 0.1);
+      background-color: rgba(255, 182, 193, 0.1); // Rosa pastel
       transform: translateY(-3px);
     }
   }
@@ -71,7 +81,7 @@ const StyledNav = styled.nav`
   align-items: center;
   position: relative;
   width: 100%;
-  color: ${theme.colors.lightestSlate};
+  color: ${theme.colors.secondary}; // Alterado para cor secundária
   font-family: ${theme.fonts.mono};
   counter-reset: item 0;
   z-index: 12;
@@ -101,11 +111,11 @@ const StyledLinks = styled.div`
       a {
         padding: 10px 15px;
         text-decoration: none;
-        color: inherit;
+        color: ${theme.colors.secondary}; // Alterado para cor secundária
         transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 
         &:hover {
-          color: ${theme.colors.green};
+          color: ${theme.colors.primary}; // Alterado para cor primária
         }
       }
     }
@@ -113,9 +123,9 @@ const StyledLinks = styled.div`
 `;
 
 const StyledResumeButton = styled.a`
-  color: ${theme.colors.green};
+  color: ${theme.colors.secondary}; // Alterado para cor secundária
   background-color: transparent;
-  border: 1px solid ${theme.colors.green};
+  border: 1px solid ${theme.colors.secondary};
   border-radius: 4px;
   padding: 0.75rem 1rem;
   font-size: ${theme.fontSizes.xs};
@@ -127,7 +137,7 @@ const StyledResumeButton = styled.a`
   margin-left: 15px;
 
   &:hover {
-    background-color: rgba(100, 255, 218, 0.1);
+    background-color: ${theme.colors.primary}20; // Alterado para cor primária com opacidade
     transform: translateY(-3px);
     box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
   }
@@ -143,7 +153,7 @@ const Header = () => {
     <StyledHeader>
       <StyledLogo>
         <Link href="/" aria-label="home">
-          MLN
+          CF
         </Link>
       </StyledLogo>
 
@@ -154,13 +164,22 @@ const Header = () => {
               <Link href="/#home">Início</Link>
             </li>
             <li>
-              <Link href="/#about">Sobre</Link>
+              <Link href="/#about">Sobre Mim</Link>
+            </li>
+            <li>
+              <Link href="/#specializations">Áreas de Atuação</Link>
             </li>
             <li>
               <Link href="/#experience">Experiência</Link>
             </li>
             <li>
-              <Link href="/#projects">Projetos</Link>
+              <Link href="/#education">Formação</Link>
+            </li>
+            <li>
+              <Link href="/#cases">Casos de Sucesso</Link>
+            </li>
+            <li>
+              <Link href="/#testimonials">Testemunhos</Link>
             </li>
             <li>
               <Link href="/#contact">Contato</Link>
@@ -169,11 +188,11 @@ const Header = () => {
         </StyledLinks>
 
         <StyledResumeButton
-          href="/curriculo.pdf"
+          href="mailto:cassi.fisioterapeuta@email.com"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Currículo
+          Enviar Email
         </StyledResumeButton>
       </StyledNav>
     </StyledHeader>

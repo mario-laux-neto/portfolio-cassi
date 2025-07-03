@@ -1,298 +1,342 @@
 // src/components/sections/Experience.js
 "use client";
-import { useState } from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { theme } from "../../../styles/theme";
+import {
+  FaBuilding,
+  FaCalendarAlt,
+  FaMapMarkerAlt,
+  FaChevronRight,
+} from "react-icons/fa";
 
 const StyledExperienceSection = styled.section`
-  h2 {
-    font-size: ${theme.fontSizes.h3};
-    margin-bottom: 30px;
-  }
+  padding: 100px 0;
+  background: ${theme.colors.white};
 `;
 
-const StyledTabContainer = styled.div`
-  display: flex;
-  min-height: 340px;
-`;
+const StyledSectionHeader = styled.div`
+  text-align: center;
+  margin-bottom: 60px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 
-const StyledTabList = styled.div`
-  position: relative;
-  width: max-content;
-  z-index: 3;
-`;
+  .numbered-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 10px 0 40px;
+    width: 100%;
+    font-size: clamp(26px, 5vw, 32px);
+    font-weight: 600;
+    color: ${theme.colors.primary};
+    line-height: 1.1;
 
-const StyledTabButton = styled.button.withConfig({
-  shouldForwardProp: (prop) => !["isActive"].includes(prop),
-})`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 42px; /* Altura da aba */
-  padding: 0 20px;
-  background-color: transparent;
-  border: 0;
-  border-left: 2px solid ${theme.colors.lightestNavy};
-  color: ${({ isActive }) =>
-    isActive ? theme.colors.green : theme.colors.slate};
-  font-family: ${theme.fonts.mono};
-  font-size: ${theme.fontSizes.smish};
-  text-align: left;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    &:before {
+      position: relative;
+      bottom: 4px;
+      counter-increment: section;
+      content: "0" counter(section) ".";
+      margin-right: 10px;
+      color: ${theme.colors.success};
+      font-family: ${theme.fonts.mono};
+      font-size: clamp(16px, 3vw, 20px);
+      font-weight: 400;
+    }
 
-  &:hover {
-    background-color: ${theme.colors.lightNavy};
-    color: ${theme.colors.green};
-  }
-`;
+    &:after {
+      content: "";
+      display: block;
+      position: relative;
+      top: -5px;
+      width: 300px;
+      height: 1px;
+      margin-left: 20px;
+      background-color: ${theme.colors.lightGray};
 
-const StyledHighlight = styled.div.withConfig({
-  shouldForwardProp: (prop) => !["activeTab"].includes(prop),
-})`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  width: 2px;
-  height: 42px; /* Altura da aba */
-  border-radius: 4px;
-  background: ${theme.colors.green};
-  transform: translateY(calc(${({ activeTab }) => activeTab} * 42px));
-  transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-`;
+      @media (max-width: 768px) {
+        width: 100px;
+        margin-left: 10px;
+      }
 
-const StyledTabContent = styled.div`
-  position: relative;
-  width: 100%;
-  margin-left: 20px;
-
-  h3 {
-    font-size: ${theme.fontSizes.xxl};
-    font-weight: 500;
-    margin-bottom: 5px;
-  }
-
-  .company {
-    color: ${theme.colors.green};
+      @media (max-width: 600px) {
+        display: none;
+      }
+    }
   }
 
   p {
-    font-family: ${theme.fonts.mono};
-    font-size: ${theme.fontSizes.smish};
-    color: ${theme.colors.lightSlate};
+    font-size: 18px;
+    color: ${theme.colors.mediumGray};
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
   }
+`;
 
-  ul {
-    padding: 0;
-    margin: 20px 0 0;
-    list-style: none;
-    font-size: ${theme.fontSizes.lg};
+const StyledTimeline = styled.div`
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
 
-    li {
-      position: relative;
-      padding-left: 30px;
-      margin-bottom: 10px;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      ${theme.colors.primary},
+      ${theme.colors.success}
+    );
+    transform: translateX(-50%);
 
-      &:before {
-        content: "▹";
-        position: absolute;
-        left: 0;
-        color: ${theme.colors.green};
-      }
-    }
-  }
-
-  .skills-section {
-    margin-top: 25px;
-
-    h4 {
-      font-size: ${theme.fontSizes.md};
-      font-weight: 500;
-      color: ${theme.colors.lightSlate};
-      margin-bottom: 10px;
-      font-family: ${theme.fonts.mono};
-    }
-
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-
-      .skill-tag {
-        background-color: ${theme.colors.lightNavy};
-        color: ${theme.colors.green};
-        padding: 4px 8px;
-        border-radius: 3px;
-        font-size: ${theme.fontSizes.xs};
-        font-family: ${theme.fonts.mono};
-        border: 1px solid ${theme.colors.lightestNavy};
-      }
-    }
-  }
-
-  @media (max-width: 768px) {
-    margin-left: 0;
-    h3 {
-      font-size: ${theme.fontSizes.lg};
-    }
-    p {
-      font-size: ${theme.fontSizes.sm};
-    }
-    ul {
-      font-size: ${theme.fontSizes.sm};
-    }
-  }
-
-  @media (max-width: 480px) {
-    h3 {
-      font-size: ${theme.fontSizes.md};
-    }
-    p {
-      font-size: ${theme.fontSizes.xs};
-    }
-    ul {
-      font-size: ${theme.fontSizes.xs};
+    @media (max-width: 768px) {
+      left: 30px;
     }
   }
 `;
 
-const jobsData = [
-  {
-    company: "CRS - Pollen Parque",
-    role: "Estagiário em Desenvolvimento",
-    date: "Abril 2025 - Presente",
-    tasks: [
-      "Desenvolvimento de aplicações web modernas utilizando React.js e Next.js",
-      "Colaboração em projetos do Centro de Residência em Software",
-      "Aplicação de boas práticas de desenvolvimento e versionamento com Git",
-    ],
-    skills: ["React.js", "Next.js", "JavaScript", "HTML/CSS", "Git"],
-  },
-  {
-    company: "Santa Maria Imóveis",
-    role: "Assistente Administrativo",
-    date: "Junho 2024 - Dezembro 2024 - 7 meses",
-    tasks: [
-      "Responsável por uma variedade de rotinas administrativas, incluindo atendimento direto ao cliente",
-      "Atualização e gestão de dados em planilhas de controle",
-      "Controle de cobranças de condomínios e processos de cancelamento de seguros",
-      "Conferência e organização de documentos",
-    ],
-    skills: [
-      "Atendimento ao Cliente",
-      "Excel",
-      "Gestão de Dados",
-      "Organização",
-    ],
-  },
-  {
-    company: "Cotrisal",
-    role: "Auxiliar Administrativo",
-    date: "Dezembro 2021 - Janeiro 2024 - 2 anos e 2 meses",
-    tasks: [
-      "Conferência e lançamento de caixas financeiros",
-      "Organização e distribuição de documentos contábeis",
-      "Atualização de dados em planilhas de controle",
-      "Garantia da precisão das informações financeiras",
-    ],
-    skills: [
-      "Contabilidade",
-      "Excel",
-      "Controle Financeiro",
-      "Atenção aos Detalhes",
-    ],
-  },
-  {
-    company: "Cotrisal",
-    role: "Estagiário",
-    date: "Fevereiro 2021 - Dezembro 2021 - 11 meses",
-    tasks: [
-      "Gestão e organização de documentos empresariais",
-      "Separação e arquivamento de notas fiscais e documentos importantes",
-      "Manutenção da integridade do arquivo morto da empresa",
-      "Garantia de fácil acesso às informações arquivadas",
-    ],
-    skills: [
-      "Organização",
-      "Gestão Documental",
-      "Arquivamento",
-      "Atenção aos Detalhes",
-    ],
-  },
-];
+const StyledExperienceItem = styled(motion.div)`
+  display: flex;
+  justify-content: ${(props) => (props.isRight ? "flex-end" : "flex-start")};
+  margin-bottom: 50px;
+  position: relative;
+
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+    margin-left: 60px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    width: 16px;
+    height: 16px;
+    background: ${theme.colors.success};
+    border: 4px solid ${theme.colors.white};
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: ${theme.shadows.md};
+    z-index: 2;
+
+    @media (max-width: 768px) {
+      left: 30px;
+    }
+  }
+`;
+
+const StyledExperienceCard = styled.div`
+  background: ${theme.colors.white};
+  border-radius: ${theme.borderRadius.lg};
+  padding: 30px;
+  box-shadow: ${theme.shadows.md};
+  width: 45%;
+  position: relative;
+  border-left: 4px solid ${theme.colors.primary};
+
+  @media (max-width: 768px) {
+    width: calc(100% - 60px);
+    margin-left: 0;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: ${theme.shadows.lg};
+    transition: all 0.3s ease;
+  }
+`;
+
+const StyledCompanyHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+`;
+
+const StyledCompanyIcon = styled.div`
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(
+    135deg,
+    ${theme.colors.primary},
+    ${theme.colors.success}
+  );
+  border-radius: ${theme.borderRadius.sm};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${theme.colors.white};
+  font-size: 20px;
+  flex-shrink: 0;
+`;
+
+const StyledCompanyInfo = styled.div`
+  flex: 1;
+
+  .company-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: ${theme.colors.primary};
+    margin-bottom: 5px;
+  }
+
+  .location {
+    font-size: 14px;
+    color: ${theme.colors.mediumGray};
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    svg {
+      font-size: 12px;
+    }
+  }
+`;
+
+const StyledPosition = styled.h3`
+  font-size: 20px;
+  font-weight: 600;
+  color: ${theme.colors.primary};
+  margin-bottom: 10px;
+`;
+
+const StyledPeriod = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: ${theme.colors.success};
+  font-weight: 500;
+  margin-bottom: 15px;
+
+  svg {
+    font-size: 12px;
+  }
+`;
+
+const StyledDescription = styled.p`
+  font-size: 16px;
+  color: ${theme.colors.mediumGray};
+  line-height: 1.6;
+  margin-bottom: 20px;
+`;
+
+const StyledResponsibilities = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: ${theme.colors.mediumGray};
+    line-height: 1.5;
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 6px;
+      height: 6px;
+      background: ${theme.colors.success};
+      border-radius: 50%;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+`;
 
 const Experience = () => {
-  const [activeTab, setActiveTab] = useState(0);
+  const experiences = [
+    {
+      position: "Estagiária de Fisioterapia",
+      company: "Hospital Central de Lisboa",
+      location: "Lisboa, Portugal",
+      period: "2023 - Presente",
+      description:
+        "Atuação em fisioterapia neurológica e traumato-ortopédica, com foco em aprendizado prático e desenvolvimento profissional.",
+      responsibilities: [
+        "Acompanhamento de pacientes neurológicos",
+        "Participação em sessões de reabilitação pós-cirúrgica",
+        "Colaboração com equipes multidisciplinares",
+      ],
+    },
+  ];
 
   return (
     <StyledExperienceSection id="experience">
-      <h2 className="numbered-heading">Onde Trabalhei</h2>
-      <StyledTabContainer>
-        <StyledTabList role="tablist" aria-label="Job tabs">
-          {jobsData &&
-            jobsData.map((job, i) => (
-              <StyledTabButton
-                key={i}
-                isActive={activeTab === i}
-                onClick={() => setActiveTab(i)}
-                id={`tab-${i}`}
-                role="tab"
-                aria-selected={activeTab === i}
-                aria-controls={`panel-${i}`}
-              >
-                <span>{job.company}</span>
-              </StyledTabButton>
-            ))}
-          <StyledHighlight activeTab={activeTab} />
-        </StyledTabList>
+      <StyledSectionHeader>
+        <h2 className="numbered-heading">Experiência Profissional</h2>
+        <p>
+          O meu percurso profissional tem sido marcado pela diversidade de
+          contextos clínicos e pela busca constante da excelência no cuidado aos
+          pacientes.
+        </p>
+      </StyledSectionHeader>
 
-        <div>
-          {jobsData &&
-            jobsData.map((job, i) => (
-              <StyledTabContent
-                key={i}
-                id={`panel-${i}`}
-                role="tabpanel"
-                tabIndex={activeTab === i ? "0" : "-1"}
-                aria-labelledby={`tab-${i}`}
-                hidden={activeTab !== i}
-              >
-                <h3>
-                  <span>{job.role}</span>
-                  <span className="company">
-                    &nbsp;@&nbsp;
-                    <a href="#" className="inline-link">
-                      {job.company}
-                    </a>
-                  </span>
-                </h3>
-                <p>{job.date}</p>
-                <ul>
-                  {job.tasks.map((task, j) => (
-                    <li key={j}>{task}</li>
-                  ))}
-                </ul>
-
-                {job.skills && (
-                  <div className="skills-section">
-                    <h4>Competências:</h4>
-                    <div className="skills-list">
-                      {job.skills.map((skill, k) => (
-                        <span key={k} className="skill-tag">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
+      <StyledTimeline>
+        {experiences.map((experience, index) => (
+          <StyledExperienceItem
+            key={index}
+            isRight={index % 2 === 1}
+            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+            viewport={{ once: true }}
+          >
+            <StyledExperienceCard>
+              <StyledCompanyHeader>
+                <StyledCompanyIcon>
+                  <FaBuilding />
+                </StyledCompanyIcon>
+                <StyledCompanyInfo>
+                  <div className="company-name">{experience.company}</div>
+                  <div className="location">
+                    <FaMapMarkerAlt />
+                    {experience.location}
                   </div>
+                </StyledCompanyInfo>
+              </StyledCompanyHeader>
+
+              <StyledPosition>{experience.position}</StyledPosition>
+
+              <StyledPeriod>
+                <FaCalendarAlt />
+                {experience.period}
+              </StyledPeriod>
+
+              <StyledDescription>{experience.description}</StyledDescription>
+
+              <StyledResponsibilities>
+                {experience.responsibilities.map(
+                  (responsibility, respIndex) => (
+                    <li key={respIndex}>{responsibility}</li>
+                  )
                 )}
-              </StyledTabContent>
-            ))}
-        </div>
-      </StyledTabContainer>
+              </StyledResponsibilities>
+            </StyledExperienceCard>
+          </StyledExperienceItem>
+        ))}
+      </StyledTimeline>
     </StyledExperienceSection>
   );
 };
-
 export default Experience;

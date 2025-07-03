@@ -4,54 +4,75 @@ import styled from "styled-components";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Experience from "@/components/sections/Experience";
-import Contact from "@/components/sections/Contact";
-import Projects from "@/components/sections/Projects";
+import SpecializationAreas from "@/components/sections/SpecializationAreas";
+import CaseStudies from "@/components/sections/CaseStudies";
+import Education from "@/components/sections/Education";
+import Testimonials from "@/components/sections/Testimonials";
 
 const StyledMainContainer = styled.main`
   counter-reset: section;
-  padding: 0 150px;
+  padding: 0;
+
+  @media (min-width: 1080px) {
+    .section-with-padding {
+      padding: 0 150px;
+    }
+  }
 
   @media (max-width: 1080px) {
-    padding: 0 100px;
+    .section-with-padding {
+      padding: 0 100px;
+    }
   }
-  @media (max-width: 768px) {
-    padding: 0 50px;
-  }
-  @media (max-width: 480px) {
-    padding: 0 25px;
-  }
-`;
-
-const StyledSection = styled.section`
-  margin: 0 auto;
-  padding: 100px 0;
-  max-width: 1000px;
 
   @media (max-width: 768px) {
-    padding: 80px 0;
+    .section-with-padding {
+      padding: 0 50px;
+    }
   }
 
   @media (max-width: 480px) {
-    padding: 60px 0;
+    .section-with-padding {
+      padding: 0 25px;
+    }
   }
 `;
 
 export default function Home() {
   return (
     <StyledMainContainer>
+      {/* 1. APRESENTAÇÃO PROFISSIONAL */}
       <Hero />
-      <StyledSection>
+
+      {/* 2. SOBRE MIM - Biografia Profissional */}
+      <div className="section-with-padding">
         <About />
-      </StyledSection>
-      <StyledSection>
+      </div>
+
+      {/* 3. ÁREAS DE ATUAÇÃO - Especialidades */}
+      <div className="section-with-padding">
+        <SpecializationAreas />
+      </div>
+
+      {/* 4. EXPERIÊNCIA PROFISSIONAL */}
+      {/* <div className="section-with-padding">
         <Experience />
-      </StyledSection>
-      <styledSection>
-        <Projects />
-      </styledSection>
-      <StyledSection>
-        <Contact />
-      </StyledSection>
+      </div> */}
+
+      {/* 5. FORMAÇÃO E CERTIFICAÇÕES */}
+      <div className="section-with-padding">
+        <Education />
+      </div>
+
+      {/* 6. CASOS DE SUCESSO */}
+      <div className="section-with-padding">
+        <CaseStudies />
+      </div>
+
+      {/* 7. TESTEMUNHOS */}
+      <div className="section-with-padding">
+        <Testimonials />
+      </div>
     </StyledMainContainer>
   );
 }
